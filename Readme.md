@@ -4,6 +4,20 @@
 
    ![State Diagram](./images/state.png)
 
+* Activity Diagram 
+   ![Activity Diagram](./images/activity.png)
+
+* Data Model Diagram
+   ![Data Model](./images/dmd.png)
+
+* Sequence Diagram 
+   ![Sequence](./images/sequence.png)
+
+
+`truffle develop` is run 
+`compile` command compiles the contract
+`test` runs the tests
+`truffle migrate --reset --network rinkeby` is run to deploy the contracts into rinkeby test network. 
 
 
 
