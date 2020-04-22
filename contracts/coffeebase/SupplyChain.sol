@@ -5,6 +5,7 @@ import "../coffeeaccesscontrol/DistributorRole.sol";
 import "../coffeeaccesscontrol/FarmerRole.sol";
 import "../coffeeaccesscontrol/RetailerRole.sol";
 import "../coffeeaccesscontrol/Roles.sol";
+import "../coffeecore/Ownable.sol";
 
 
 // Define a contract 'Supplychain'
@@ -12,7 +13,8 @@ contract SupplyChain is
     ConsumerRole,
     DistributorRole,
     FarmerRole,
-    RetailerRole
+    RetailerRole,
+    Ownable
 {
     // Define 'owner'
 address owner;
@@ -73,10 +75,7 @@ address owner;
     event Purchased(uint256 upc);
 
     // Define a modifer that checks to see if msg.sender == owner of the contract
-    modifier onlyOwner() {
-        require(msg.sender == owner);
-        _;
-    }
+   
 
     // Define a modifer that verifies the Caller
     modifier verifyCaller(address _address) {
@@ -172,7 +171,9 @@ address owner;
         string _originFarmLatitude,
         string _originFarmLongitude,
         string _productNotes
-    ) public {
+    )
+    
+     public onlyFarmer{
         // Add the new item as part of Harvest
         Item memory item = Item({
             sku: sku,
@@ -260,6 +261,7 @@ address owner;
         paidEnough(items[_upc].productPrice)
         // Call modifer to send any excess ether back to buyer
         checkValue(_upc)
+        onlyDistributor
     {
         // Update the appropriate fields - ownerID, distributorID, itemState
         items[_upc].ownerID = msg.sender;

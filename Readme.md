@@ -1,3 +1,20 @@
+# Project Writeup
+
+* State Diagram
+
+   ![State Diagram](./images/state.png)
+
+
+
+
+
+
+
+
+
+
+
+
 1_initial_migration.js
 ======================
 
